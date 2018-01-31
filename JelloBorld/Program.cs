@@ -13,12 +13,14 @@ namespace JelloBorld
         // THIS IS A CODE BLOCK CALLED "Main"
         {
             // CONSOLE IS A CLASS
-            Console.WriteLine("Jello Borld! What's your name?");
+            Console.WriteLine("Hello and welcome to the greatest game ever created! What's your name?");
             // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
             string name = Console.ReadLine();
-            Console.WriteLine(name + ", haha that's a stupid fucking name!");
-            Console.ReadLine();
-            Donkey();
+            Console.WriteLine(name + "!?, that's a stupid fucking name! Suit yourself loser...");
+            System.Threading.Thread.Sleep(3500);
+            Console.WriteLine("Which direction would you like to go? (North, South, East, West)");
+            Choice1(name);
+            //Donkey();
         }
         // Public = anyone can read this | int = integer
         int x = 0;
@@ -27,6 +29,38 @@ namespace JelloBorld
             x = x + 1;
             Console.WriteLine(x);
             Console.ReadLine();
+        }
+        static void Choice1(string nameVal)
+        {
+            string name = nameVal;
+            string direction = Console.ReadLine();
+            if (direction == "North" || direction == "north")
+            {
+                Console.WriteLine("You ran into a wall and died... LOSER!");
+                System.Threading.Thread.Sleep(3500);
+            }
+            else if (direction == "South" || direction == "south")
+            {
+                Console.WriteLine("You froze to death. Try making better choices " + name + "!!!");
+                System.Threading.Thread.Sleep(3500);
+            }
+            else if (direction == "East" || direction == "east")
+            {
+                Console.WriteLine("The sun is rising and you can feel it's warmth. You won the game!");
+                System.Threading.Thread.Sleep(3500);
+            }
+            else if (direction == "West" || direction == "west")
+            {
+                Console.WriteLine("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
+                System.Threading.Thread.Sleep(3500);
+            }
+            else
+            {
+                Console.WriteLine("Please input a cardinal direction...");
+                System.Threading.Thread.Sleep(3500);
+                Console.WriteLine("YA DUMBASS!");
+                Choice1(name);
+            }
         }
     }
 }
