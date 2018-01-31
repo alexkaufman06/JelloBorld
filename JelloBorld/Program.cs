@@ -13,9 +13,12 @@ namespace JelloBorld
         // THIS IS A CODE BLOCK CALLED "Main"
         {
             // CONSOLE IS A CLASS
-            Console.WriteLine("Hello and welcome to the greatest game ever created! What's your name?");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
+            Console.ResetColor();
             string name = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(2500);
             Console.WriteLine("Which direction would you like to go? (North, South, East, West)");
@@ -32,8 +35,10 @@ namespace JelloBorld
         }
         static void Choice1(string nameVal)
         {
+            Console.ResetColor();
             string name = nameVal;
             string direction = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             if (direction == "North" || direction == "north")
             {
                 Console.WriteLine("You ran into a wall and died... LOSER!");
