@@ -41,12 +41,20 @@ namespace JelloBorld
             Console.ForegroundColor = ConsoleColor.Green;
             if (direction == "North" || direction == "north")
             {
-                Console.WriteLine("You ran into a wall and died... LOSER!");
+                Console.WriteLine("You ran into a wall and suffered a traumatic brain injury...");
+                System.Threading.Thread.Sleep(3000);
+                Console.WriteLine("You die.");
+                System.Threading.Thread.Sleep(1500);
+                Console.WriteLine("Try making better choices next time, " + name + "!!!");
                 Console.ReadLine();
             }
             else if (direction == "South" || direction == "south")
             {
-                Console.WriteLine("You froze to death. Try making better choices " + name + "!!!");
+                Console.WriteLine("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
+                System.Threading.Thread.Sleep(3000);
+                Console.WriteLine("You die.");
+                System.Threading.Thread.Sleep(1500);
+                Console.WriteLine("Try making better choices next time, " + name + "!!!");
                 Console.ReadLine();
             }
             else if (direction == "East" || direction == "east")
@@ -57,6 +65,10 @@ namespace JelloBorld
             else if (direction == "West" || direction == "west")
             {
                 Console.WriteLine("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
+                System.Threading.Thread.Sleep(3000);
+                Console.WriteLine("You die.");
+                System.Threading.Thread.Sleep(1500);
+                Console.WriteLine("Try making better choices next time, " + name + "!!!");
                 Console.ReadLine();
             }
             else
