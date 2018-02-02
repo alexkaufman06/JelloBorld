@@ -1,7 +1,7 @@
 ﻿using System;
-
-// NAMESPACE IS A WAY OF ORGANIZING CODE
-// READ UP ON OOP
+/* Solution Explorer on right (A Solution can contain multiple projects)
+   NAMESPACE IS A WAY OF ORGANIZING CODE
+   READ UP ON OOP */
 namespace JelloBorld
 {
     // BELOW IS A CLASS CALLED "Program"
@@ -14,7 +14,8 @@ namespace JelloBorld
         {
             // CONSOLE IS A CLASS
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
+            Console.Write("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name");
+            Console.Write("?");
             // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
             Console.ResetColor();
             string name = Console.ReadLine();
@@ -25,7 +26,7 @@ namespace JelloBorld
             Choice1(name);
             //Donkey();
         }
-        // Public = anyone can read this | int = integer
+        /* Public = anyone can read this | int = integer
         int x = 0;
         static void Donkey(int x=1)
         {
@@ -33,6 +34,7 @@ namespace JelloBorld
             Console.WriteLine(x);
             Console.ReadLine();
         }
+        */
         static void Choice1(string nameVal)
         {
             Console.ResetColor();
@@ -42,20 +44,12 @@ namespace JelloBorld
             if (direction == "North" || direction == "north")
             {
                 Console.WriteLine("You ran into a wall and suffered a traumatic brain injury...");
-                System.Threading.Thread.Sleep(3000);
-                Console.WriteLine("You die.");
-                System.Threading.Thread.Sleep(1500);
-                Console.WriteLine("Try making better choices next time, " + name + "!!!");
-                Console.ReadLine();
+                Death(name);
             }
             else if (direction == "South" || direction == "south")
             {
                 Console.WriteLine("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
-                System.Threading.Thread.Sleep(3000);
-                Console.WriteLine("You die.");
-                System.Threading.Thread.Sleep(1500);
-                Console.WriteLine("Try making better choices next time, " + name + "!!!");
-                Console.ReadLine();
+                Death(name);
             }
             else if (direction == "East" || direction == "east")
             {
@@ -65,11 +59,7 @@ namespace JelloBorld
             else if (direction == "West" || direction == "west")
             {
                 Console.WriteLine("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
-                System.Threading.Thread.Sleep(3000);
-                Console.WriteLine("You die.");
-                System.Threading.Thread.Sleep(1500);
-                Console.WriteLine("Try making better choices next time, " + name + "!!!");
-                Console.ReadLine();
+                Death(name);
             }
             else
             {
@@ -78,6 +68,15 @@ namespace JelloBorld
                 Console.WriteLine("YA DUMBASS!");
                 Choice1(name);
             }
+        }
+        static void Death(string nameVal)
+        {
+            string name = nameVal;
+            System.Threading.Thread.Sleep(3000);
+            Console.WriteLine("You die.");
+            System.Threading.Thread.Sleep(1500);
+            Console.WriteLine("Try making better choices next time, " + name + "!!!");
+            Console.ReadLine();
         }
     }
 }
