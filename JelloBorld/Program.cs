@@ -18,17 +18,7 @@ namespace JelloBorld
             System.Threading.Thread.Sleep(2500);
             Type("Which direction would you like to go? (North, South, East, or West)");
             Choice1(name);
-            //Donkey();
         }
-        /* Public = anyone can read this | int = integer
-        int x = 0;
-        static void Donkey(int x=1)
-        {
-            x = x + 1;
-            Console.WriteLine(x);
-            Console.ReadLine();
-        }
-        */
         static void Type(string stringToType)
         {
             Random rnd = new Random();
