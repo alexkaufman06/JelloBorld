@@ -32,18 +32,17 @@ namespace JelloBorld
         static void Choice1(string nameVal)
         {
             Console.ResetColor();
-            string name = nameVal;
             string direction = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.Green;
             if (direction == "North" || direction == "north")
             {
                 Type("You ran into a wall and suffered a traumatic brain injury...");
-                Death(name);
+                Death(nameVal);
             }
             else if (direction == "South" || direction == "south")
             {
                 Type("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
-                Death(name);
+                Death(nameVal);
             }
             else if (direction == "East" || direction == "east")
             {
@@ -53,23 +52,22 @@ namespace JelloBorld
             else if (direction == "West" || direction == "west")
             {
                 Type("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
-                Death(name);
+                Death(nameVal);
             }
             else
             {
                 Type("Please input a cardinal direction...");
                 System.Threading.Thread.Sleep(2500);
                 Type("YA DUMBASS!!!");
-                Choice1(name);
+                Choice1(nameVal);
             }
         }
         static void Death(string nameVal)
         {
-            string name = nameVal;
             System.Threading.Thread.Sleep(3000);
             Type("You die.");
             System.Threading.Thread.Sleep(1500);
-            Type("Try making better choices next time, " + name + "!!!");
+            Type("Try making better choices next time, " + nameVal + "!!!");
             Console.ReadLine();
         }
     }
