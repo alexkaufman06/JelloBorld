@@ -40,14 +40,22 @@ namespace JelloBorld
                 string binary = "";
                 for (int j = 1; j <= 90; j++)
                 {
-                    binary += rnd.Next(0, 2);
+                    if (rnd.Next(0,11) > 8)
+                    {
+                        binary += " ";
+                    }
+                    else
+                    {
+                        binary += rnd.Next(0, 2);
+                    }
                 }
                 Console.Write(binary);
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(60);
             }
+            // BELOW SCROLLS THE BINARY OUT OF VIEW
             for (int i = 1; i <= 35; i++)
             {
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(60);
                 Console.WriteLine("");
             }
             Console.Clear();
