@@ -10,9 +10,11 @@ namespace JelloBorld
         static void Main(string[] args)
         { // THIS IS A CODE BLOCK CALLED "Main"
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
+            Matrix();
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             Console.ResetColor();
             string name = Console.ReadLine(); // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             Type(name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(2500);
@@ -28,11 +30,33 @@ namespace JelloBorld
                 Console.Write(stringToType[i]);
             }
             Console.WriteLine("");
+            Console.WriteLine("");
+        }
+        static void Matrix()
+        {
+            Random rnd = new Random();
+            for (int i = 1; i <= 90; i++)
+            {
+                string binary = "";
+                for (int j = 1; j <= 90; j++)
+                {
+                    binary += rnd.Next(0, 2);
+                }
+                Console.Write(binary);
+                System.Threading.Thread.Sleep(50);
+            }
+            for (int i = 1; i <= 35; i++)
+            {
+                System.Threading.Thread.Sleep(50);
+                Console.WriteLine("");
+            }
+            Console.Clear();
         }
         static void Choice1(string nameVal)
         {
             Console.ResetColor();
             string direction = Console.ReadLine();
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             if (direction == "North" || direction == "north")
             {
@@ -46,8 +70,12 @@ namespace JelloBorld
             }
             else if (direction == "East" || direction == "east")
             {
-                Type("The sun is rising and you can feel it's warmth. YOU WON THE GAME!");
-                Console.ReadLine();
+                Type("The sun is rising and you can feel its warmth. YOU WON THE GAME! Not only did you win the " +
+                     "game, but you also succeeded in re-routing the encryptor while hacking into the mainframe!");
+                System.Threading.Thread.Sleep(2500);
+                Matrix();
+                Type("Great job " + nameVal + "!!!");
+                System.Threading.Thread.Sleep(2500);
             }
             else if (direction == "West" || direction == "west")
             {
@@ -68,7 +96,8 @@ namespace JelloBorld
             Type("You die.");
             System.Threading.Thread.Sleep(1500);
             Type("Try making better choices next time, " + nameVal + "!!!");
-            Console.ReadLine();
+            System.Threading.Thread.Sleep(2500);
+            Matrix();
         }
     }
 }
