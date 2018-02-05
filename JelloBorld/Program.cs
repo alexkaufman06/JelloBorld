@@ -63,10 +63,15 @@ namespace JelloBorld
         static void Choice1(string nameVal)
         {
             Console.ResetColor();
-            string direction = Console.ReadLine();
+            string direction = Console.ReadLine(); // method here
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
-            if (direction == "North" || direction == "north")
+            if (direction == "North" || direction == "north") //Add toLower method on input remove OR statement
+                                                              // Then turn if statement into case (maybe)
+                                                              // Make class called item with parameters to hold onto things
+                                                              // Has height, width, weight (parent class)
+                                                              // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
+                                                              // Machine language vs assembly
             {
                 Type("You ran into a wall and suffered a traumatic brain injury...");
                 Death(nameVal);
