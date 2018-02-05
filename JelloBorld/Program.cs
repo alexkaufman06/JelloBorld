@@ -63,25 +63,25 @@ namespace JelloBorld
         static void Choice1(string nameVal)
         {
             Console.ResetColor();
-            string direction = Console.ReadLine(); // method here
+            string direction = Console.ReadLine().ToLower(); 
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
-            if (direction == "North" || direction == "north") //Add toLower method on input remove OR statement
-                                                              // Then turn if statement into case (maybe)
-                                                              // Make class called item with parameters to hold onto things
-                                                              // Has height, width, weight (parent class)
-                                                              // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
-                                                              // Machine language vs assembly
+            if (direction == "north")
+                 // Turn if statement into case (maybe)
+                 // Make class called item with parameters to hold onto things
+                 // Has height, width, weight (parent class)
+                 // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
+                 // Machine language vs assembly (read up)
             {
                 Type("You ran into a wall and suffered a traumatic brain injury...");
                 Death(nameVal);
             }
-            else if (direction == "South" || direction == "south")
+            else if (direction == "south")
             {
                 Type("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
                 Death(nameVal);
             }
-            else if (direction == "East" || direction == "east")
+            else if (direction == "east")
             {
                 Type("The sun is rising and you can feel its warmth. YOU WON THE GAME! Not only did you win the " +
                      "game, but you also succeeded in re-routing the encryptor while hacking into the mainframe!");
@@ -90,7 +90,7 @@ namespace JelloBorld
                 Type("Great job " + nameVal + "!!!");
                 System.Threading.Thread.Sleep(2500);
             }
-            else if (direction == "West" || direction == "west")
+            else if (direction == "west")
             {
                 Type("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
                 Death(nameVal);
