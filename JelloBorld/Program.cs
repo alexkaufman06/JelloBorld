@@ -9,6 +9,7 @@ namespace JelloBorld
     // BELOW IS A METHOD CALLED MAIN static=not changing | void=not returning a value
         static void Main(string[] args)
         { // THIS IS A CODE BLOCK CALLED "Main"
+            Beginning:
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Matrix();
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
@@ -20,6 +21,12 @@ namespace JelloBorld
             System.Threading.Thread.Sleep(2500);
             Type("Which direction would you like to go? (North, South, East, or West)");
             Choice1(name);
+            Type("Type 'Yes' to play another game.");
+            string newGame = Console.ReadLine().ToLower();
+            if (newGame == "yes")
+            {
+                goto Beginning;
+            }
         }
         static void Type(string stringToType)
         {
@@ -110,7 +117,6 @@ namespace JelloBorld
             System.Threading.Thread.Sleep(1500);
             Type("Try making better choices next time, " + nameVal + "!!!");
             System.Threading.Thread.Sleep(2500);
-            Matrix();
         }
     }
 }
