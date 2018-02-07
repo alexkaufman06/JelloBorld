@@ -40,7 +40,7 @@ namespace JelloBorld
             Console.ForegroundColor = ConsoleColor.Green;
             Type(name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(2500);
-            Type("Which direction would you like to go? (North, South, East, or West)");
+            Type("Which cardinal direction would you like to go? You may want to look before you move...");
             Choice1(name);
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
@@ -99,9 +99,17 @@ namespace JelloBorld
                     Type("You ran into a wall and suffered a traumatic brain injury...");
                     Death(nameVal);
                     break;
+                case "look north":
+                    Type("You see dark and treacherous looking wall...");
+                    Choice1(nameVal);
+                    break;
                 case "south":
                     Type("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
                     Death(nameVal);
+                    break;
+                case "look south":
+                    Type("You see a storm brewing with intense frosty winds...");
+                    Choice1(nameVal);
                     break;
                 case "east":
                     Type("The sun is rising and you can feel its warmth. YOU WON THE GAME! Not only did you win the " +
@@ -111,9 +119,17 @@ namespace JelloBorld
                     Type("Great job " + nameVal + "!!!");
                     System.Threading.Thread.Sleep(2500);
                     break;
+                case "look east":
+                    Type("You see the beginnings of a peaceful sunrise.");
+                    Choice1(nameVal);
+                    break;
                 case "west":
                     Type("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
                     Death(nameVal);
+                    break;
+                case "look west":
+                    Type("You see swift movement and hear some growling sounds...");
+                    Choice1(nameVal);
                     break;
                 default:
                     Type("Please input a cardinal direction...");
