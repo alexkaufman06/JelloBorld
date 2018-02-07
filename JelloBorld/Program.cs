@@ -8,6 +8,21 @@
 // Machine language vs assembly (read up)
 namespace JelloBorld
 {
+    class Item
+    {
+        private int height;
+        public int Height
+        {
+            get
+            {
+                return height;
+            }
+            set
+            {
+                height = value;
+            }
+        }
+    }
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
     {            // BELOW IS A METHOD CALLED MAIN static=not changing | void=not returning a value
         static void Main(string[] args)
@@ -15,6 +30,9 @@ namespace JelloBorld
             Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Matrix();
+            Item item = new Item();
+            item.Height = 1;
+            // Console.WriteLine(item.Height);
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             Console.ResetColor();
             string name = Console.ReadLine(); // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
