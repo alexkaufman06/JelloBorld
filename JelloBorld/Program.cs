@@ -13,14 +13,9 @@ namespace JelloBorld
         private int height;
         public int Height
         {
-            get
-            {
-                return height;
-            }
-            set
-            {
-                height = value;
-            }
+            get { return height; } // THIS IS A GET ACCESSOR WHICH RESEMBLES A METHOD
+            set { height = value; } // SET ACCESSOR WHICH RESEMBLES A METHOD WITH RETURN TYPE OF VOID
+                                    // IT HAS AN IMPLICIT PARAMETER CALLED VALUE
         }
     }
     class Character
@@ -28,14 +23,8 @@ namespace JelloBorld
         private string name;
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value; 
-            }
+            get { return name; }
+            set { name = value; }
         }
     }
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
