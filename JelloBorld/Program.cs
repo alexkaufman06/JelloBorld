@@ -23,6 +23,21 @@ namespace JelloBorld
             }
         }
     }
+    class Character
+    {
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value; 
+            }
+        }
+    }
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
     {            // BELOW IS A METHOD CALLED MAIN static=not changing | void=not returning a value
         static void Main(string[] args)
@@ -30,18 +45,16 @@ namespace JelloBorld
             Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Matrix();
-            Item item = new Item();
-            item.Height = 1;
-            // Console.WriteLine(item.Height);
+            Character player = new Character();
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             Console.ResetColor();
-            string name = Console.ReadLine(); // READ LINE IS A METHOD THAT WAITS FOR THE USER TO PUSH ENTER
+            player.Name = Console.ReadLine();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
-            Type(name + "!? That's a stupid fucking name! Suit yourself loser...");
+            Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(2500);
             Type("Which cardinal direction would you like to go? You may want to look before you move...");
-            Choice1(name);
+            Choice1(player.Name);
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
             if (newGame == "yes")
@@ -100,7 +113,7 @@ namespace JelloBorld
                     Death(nameVal);
                     break;
                 case "look north":
-                    Type("You see dark and treacherous looking wall...");
+                    Type("You see a dark and treacherous looking wall...");
                     Choice1(nameVal);
                     break;
                 case "south":
