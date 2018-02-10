@@ -2,8 +2,7 @@
 /* Solution Explorer on right (A Solution can contain multiple projects)
    NAMESPACE IS A WAY OF ORGANIZING CODE
    READ UP ON OOP */
-// Make class called item with parameters to hold onto things
-// Has height, width, weight (parent class)
+// Item class as height, width, weight (parent class)
 // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
 // Machine language vs assembly (read up)
 namespace JelloBorld
@@ -33,7 +32,7 @@ namespace JelloBorld
         { // THIS IS A CODE BLOCK CALLED "Main"
             Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
-            Matrix();
+            // Matrix();
             Character player = new Character();
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             Console.ResetColor();
@@ -41,13 +40,20 @@ namespace JelloBorld
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
-            System.Threading.Thread.Sleep(2500);
-            Type("Which cardinal direction would you like to go? You may want to look before you move...");
+            System.Threading.Thread.Sleep(1500);
+            Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
+            Type("You can look around by typing look with a cardinal direction (ex: Look North).");
+            Type("To move in that direction simply type 'North' or 'N' for short.");
+            Type("To talk to characters nearby, type 'talk to' plus the name of the character. Good luck!");
+            Console.ReadLine();
+            Matrix();
+            Type("You find yourself in an open field with an old man and a chest nearby.");
             Choice1(player.Name);
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
             if (newGame == "yes")
             {
+                Matrix();
                 goto Beginning;
             }
         }
@@ -98,22 +104,27 @@ namespace JelloBorld
             switch (direction)
             {
                 case "north":
+                case "n":
                     Type("You ran into a wall and suffered a traumatic brain injury...");
                     Death(nameVal);
                     break;
                 case "look north":
+                case "look n":
                     Type("You see a dark and treacherous looking wall...");
                     Choice1(nameVal);
                     break;
                 case "south":
+                case "s":
                     Type("You find yourself in a frozen tundra and get a gnarly case of frostbite...");
                     Death(nameVal);
                     break;
                 case "look south":
+                case "look s":
                     Type("You see a storm brewing with intense frosty winds...");
                     Choice1(nameVal);
                     break;
                 case "east":
+                case "e":
                     Type("The sun is rising and you can feel its warmth. YOU WON THE GAME! Not only did you win the " +
                      "game, but you also succeeded in re-routing the encryptor while hacking into the mainframe!");
                     System.Threading.Thread.Sleep(2500);
@@ -122,19 +133,27 @@ namespace JelloBorld
                     System.Threading.Thread.Sleep(2500);
                     break;
                 case "look east":
+                case "look e":
                     Type("You see the beginnings of a peaceful sunrise.");
                     Choice1(nameVal);
                     break;
                 case "west":
+                case "w":
                     Type("The warmth of the sunrise can be felt on your back. An animal sneaks up and eats you...");
                     Death(nameVal);
                     break;
                 case "look west":
+                case "look w":
                     Type("You see swift movement and hear some growling sounds...");
                     Choice1(nameVal);
                     break;
+                case "talk to old man":
+                case "talk to man":
+                    Type("The man looks you over and says 'be sure to look around before you embark on your journey,don't make the same mistakes I did.'");
+                    Choice1(nameVal);
+                    break;
                 default:
-                    Type("Please input a cardinal direction...");
+                    Type("Please speak clearly...");
                     System.Threading.Thread.Sleep(2500);
                     Type("YA DUMBASS!!!");
                     Choice1(nameVal);
