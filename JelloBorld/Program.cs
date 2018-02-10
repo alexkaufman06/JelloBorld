@@ -1,7 +1,12 @@
 ﻿using System;
 /* Solution Explorer on right (A Solution can contain multiple projects)
    NAMESPACE IS A WAY OF ORGANIZING CODE
-   READ UP ON OOP */
+   READ UP ON OOP
+   weapons (knife, dagger, sword, crossbow)
+   gear (--key, rope, shovel, )
+   wearable (backpack, armor, shoes, pants, snow shoes)
+   Add inspect to list of actions?
+*/
 // Item class as height, width, weight (parent class)
 // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
 // Machine language vs assembly (read up)
@@ -9,21 +14,34 @@ namespace JelloBorld
 {
     class Item
     {
-        private int height;
-        public int Height
-        {
-            get { return height; } // THIS IS A GET ACCESSOR WHICH RESEMBLES A METHOD
-            set { height = value; } // SET ACCESSOR WHICH RESEMBLES A METHOD WITH RETURN TYPE OF VOID
-                                    // IT HAS AN IMPLICIT PARAMETER CALLED VALUE
-        }
-    }
-    class Character
-    {
         private string name;
         public string Name
         {
             get { return name; }
             set { name = value; }
+        }
+        private int quantity;
+        public int Quantity
+        {
+            get { return quantity; } // THIS IS A GET ACCESSOR WHICH RESEMBLES A METHOD
+            set { quantity = value; } // SET ACCESSOR WHICH RESEMBLES A METHOD WITH RETURN TYPE OF VOID
+                                    // IT HAS AN IMPLICIT PARAMETER CALLED VALUE
+        }
+    }
+    class Player
+    {
+        // ADD HP AND INVENTORY
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        private int money;
+        public int Money
+        {
+            get { return money; }
+            set { money = value; }
         }
     }
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
@@ -33,7 +51,7 @@ namespace JelloBorld
             Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             // Matrix();
-            Character player = new Character();
+            Player player = new Player();
             Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
             Console.ResetColor();
             player.Name = Console.ReadLine();
@@ -42,9 +60,10 @@ namespace JelloBorld
             Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
-            Type("You can look around by typing look with a cardinal direction (ex: Look North).");
-            Type("To move in that direction simply type 'North' or 'N' for short.");
+            Type("You can look around by typing look with a cardinal direction (ex: Look North or ln).");
+            Type("To move a direction simply type 'North' or 'N' for short (ex: N,S,E,W).");
             Type("To talk to characters nearby, type 'talk to' plus the name of the character. Good luck!");
+            Type("Press ENTER to start.");
             Console.ReadLine();
             Matrix();
             Type("You find yourself in an open field with an old man and a chest nearby.");
@@ -110,6 +129,7 @@ namespace JelloBorld
                     break;
                 case "look north":
                 case "look n":
+                case "ln":
                     Type("You see a dark and treacherous looking wall...");
                     Choice1(nameVal);
                     break;
@@ -120,6 +140,7 @@ namespace JelloBorld
                     break;
                 case "look south":
                 case "look s":
+                case "ls":
                     Type("You see a storm brewing with intense frosty winds...");
                     Choice1(nameVal);
                     break;
@@ -134,6 +155,7 @@ namespace JelloBorld
                     break;
                 case "look east":
                 case "look e":
+                case "le":
                     Type("You see the beginnings of a peaceful sunrise.");
                     Choice1(nameVal);
                     break;
@@ -144,12 +166,23 @@ namespace JelloBorld
                     break;
                 case "look west":
                 case "look w":
+                case "lw":
                     Type("You see swift movement and hear some growling sounds...");
                     Choice1(nameVal);
                     break;
                 case "talk to old man":
                 case "talk to man":
                     Type("The man looks you over and says 'be sure to look around before you embark on your journey,don't make the same mistakes I did.'");
+                    Choice1(nameVal);
+                    break;
+                case "open chest":
+                    Type("You have added a small dagger to your inventory");
+                    Item dagger = new Item();
+                    dagger.Name = "Dagger";
+                    Choice1(nameVal);
+                    break;
+                case "inventory":
+                    Type("You have a " + " in your posession");
                     Choice1(nameVal);
                     break;
                 default:
