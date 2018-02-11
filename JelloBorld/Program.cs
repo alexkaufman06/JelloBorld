@@ -1,4 +1,5 @@
 ﻿using System;
+// Add art: http://patorjk.com/software/taag/#p=display&c=mysql&f=ANSI%20Shadow&t=%20The%20%20greatest%0A%20%20%20%20game%20Ever%0A%20%20%20%20%20%20created 
 /* Solution Explorer on right (A Solution can contain multiple projects)
    NAMESPACE IS A WAY OF ORGANIZING CODE
    READ UP ON OOP
@@ -12,47 +13,16 @@
 // Machine language vs assembly (read up)
 namespace JelloBorld
 {
-    class Item
-    {
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private int quantity;
-        public int Quantity
-        {
-            get { return quantity; } // THIS IS A GET ACCESSOR WHICH RESEMBLES A METHOD
-            set { quantity = value; } // SET ACCESSOR WHICH RESEMBLES A METHOD WITH RETURN TYPE OF VOID
-                                    // IT HAS AN IMPLICIT PARAMETER CALLED VALUE
-        }
-    }
-    class Player
-    {
-        // ADD HP AND INVENTORY
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private int money;
-        public int Money
-        {
-            get { return money; }
-            set { money = value; }
-        }
-    }
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
     {            // BELOW IS A METHOD CALLED MAIN static=not changing | void=not returning a value
         static void Main(string[] args)
         { // THIS IS A CODE BLOCK CALLED "Main"
-            Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
+        Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
+            Console.WindowWidth = 108;
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
-            // Matrix();
+            Intro();
             Player player = new Player();
-            Type("Hello and welcome to the GREATEST GAME EVER CREATED! What's your name?");
+            Type("What's your name?");
             Console.ResetColor();
             player.Name = Console.ReadLine();
             Console.WriteLine("");
@@ -76,6 +46,141 @@ namespace JelloBorld
                 goto Beginning;
             }
         }
+        class Item
+        {
+            private string name;
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+            private int quantity;
+            public int Quantity
+            {
+                get { return quantity; } // THIS IS A GET ACCESSOR WHICH RESEMBLES A METHOD
+                set { quantity = value; } // SET ACCESSOR WHICH RESEMBLES A METHOD WITH RETURN TYPE OF VOID
+                                          // IT HAS AN IMPLICIT PARAMETER CALLED VALUE
+            }
+        }
+        class Player
+        {
+            // ADD HP AND INVENTORY (Inventory may be a list)
+            private string name;
+            public string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+            private int money;
+            public int Money
+            {
+                get { return money; }
+                set { money = value; }
+            }
+        }
+        static void Intro()
+        {
+            Console.CursorVisible = false;
+            Console.WriteLine("");
+            TypeIntro("HELLO AND WELCOME TO...");
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(@"                                          HELLO AND WELCOME TO...
+
+
+      ████████╗██╗  ██╗███████╗    
+      ╚══██╔══╝██║  ██║██╔════╝ 
+         ██║   ███████║█████╗    
+         ██║   ██╔══██║██╔══╝     
+         ██║   ██║  ██║███████╗    
+         ╚═╝   ╚═╝  ╚═╝╚══════╝   
+                                                                                                      ");
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(@"                                          HELLO AND WELCOME TO...
+
+
+      ████████╗██╗  ██╗███████╗     ██████╗ ██████╗ ███████╗ █████╗ ████████╗███████╗███████╗████████╗
+      ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+         ██║   ███████║█████╗      ██║  ███╗██████╔╝█████╗  ███████║   ██║   █████╗  ███████╗   ██║   
+         ██║   ██╔══██║██╔══╝      ██║   ██║██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ╚════██║   ██║   
+         ██║   ██║  ██║███████╗    ╚██████╔╝██║  ██║███████╗██║  ██║   ██║   ███████╗███████║   ██║   
+         ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝");
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(@"                                          HELLO AND WELCOME TO...
+
+
+      ████████╗██╗  ██╗███████╗     ██████╗ ██████╗ ███████╗ █████╗ ████████╗███████╗███████╗████████╗
+      ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+         ██║   ███████║█████╗      ██║  ███╗██████╔╝█████╗  ███████║   ██║   █████╗  ███████╗   ██║   
+         ██║   ██╔══██║██╔══╝      ██║   ██║██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ╚════██║   ██║   
+         ██║   ██║  ██║███████╗    ╚██████╔╝██║  ██║███████╗██║  ██║   ██║   ███████╗███████║   ██║   
+         ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   
+                                                                                                      
+                   ██████╗  █████╗ ███╗   ███╗███████╗           
+                  ██╔════╝ ██╔══██╗████╗ ████║██╔════╝           
+                  ██║  ███╗███████║██╔████╔██║█████╗             
+                  ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝          
+                  ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗          
+                   ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝");
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(@"                                          HELLO AND WELCOME TO...
+
+
+      ████████╗██╗  ██╗███████╗     ██████╗ ██████╗ ███████╗ █████╗ ████████╗███████╗███████╗████████╗
+      ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+         ██║   ███████║█████╗      ██║  ███╗██████╔╝█████╗  ███████║   ██║   █████╗  ███████╗   ██║   
+         ██║   ██╔══██║██╔══╝      ██║   ██║██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ╚════██║   ██║   
+         ██║   ██║  ██║███████╗    ╚██████╔╝██║  ██║███████╗██║  ██║   ██║   ███████╗███████║   ██║   
+         ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   
+                                                                                                      
+                   ██████╗  █████╗ ███╗   ███╗███████╗    ███████╗██╗   ██╗███████╗██████╗            
+                  ██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔════╝██║   ██║██╔════╝██╔══██╗           
+                  ██║  ███╗███████║██╔████╔██║█████╗      █████╗  ██║   ██║█████╗  ██████╔╝           
+                  ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗           
+                  ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ███████╗ ╚████╔╝ ███████╗██║  ██║           
+                   ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝    ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝");
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(@"                                          HELLO AND WELCOME TO...
+
+
+      ████████╗██╗  ██╗███████╗     ██████╗ ██████╗ ███████╗ █████╗ ████████╗███████╗███████╗████████╗
+      ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝ ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+         ██║   ███████║█████╗      ██║  ███╗██████╔╝█████╗  ███████║   ██║   █████╗  ███████╗   ██║   
+         ██║   ██╔══██║██╔══╝      ██║   ██║██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ╚════██║   ██║   
+         ██║   ██║  ██║███████╗    ╚██████╔╝██║  ██║███████╗██║  ██║   ██║   ███████╗███████║   ██║   
+         ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝   ╚═╝   
+                                                                                                      
+                   ██████╗  █████╗ ███╗   ███╗███████╗    ███████╗██╗   ██╗███████╗██████╗            
+                  ██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔════╝██║   ██║██╔════╝██╔══██╗           
+                  ██║  ███╗███████║██╔████╔██║█████╗      █████╗  ██║   ██║█████╗  ██████╔╝           
+                  ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗           
+                  ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ███████╗ ╚████╔╝ ███████╗██║  ██║           
+                   ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝    ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝           
+                                                                                                      
+                           ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗██████╗                    
+                          ██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗                   
+                          ██║     ██████╔╝█████╗  ███████║   ██║   █████╗  ██║  ██║                   
+                          ██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝  ██║  ██║                   
+                          ╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗██████╔╝                   
+                           ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═════╝ 
+
+
+");
+            System.Threading.Thread.Sleep(500);
+            TypeIntro("PRESS ENTER TO START");
+            Console.ReadLine();
+            Console.Clear();
+            Console.CursorVisible = true;
+        }
         static void Type(string stringToType)
         {
             Random rnd = new Random();
@@ -87,13 +192,22 @@ namespace JelloBorld
             Console.WriteLine("");
             Console.WriteLine("");
         }
+        static void TypeIntro(string stringToType)
+        {
+            Console.SetCursorPosition((Console.WindowWidth - stringToType.Length) / 2, Console.CursorTop);
+            for (int i = 0; stringToType.Length - 1 >= i; i++)
+            {
+                System.Threading.Thread.Sleep(300);
+                Console.Write(stringToType[i]);
+            }
+        }
         static void Matrix()
         {
             Random rnd = new Random();
             for (int i = 1; i <= 90; i++)
             {
                 string binary = "";
-                for (int j = 1; j <= 90; j++)
+                for (int j = 1; j <= 108; j++)
                 {
                     if (rnd.Next(0,11) > 8)
                     {
@@ -113,6 +227,7 @@ namespace JelloBorld
                 Console.WriteLine("");
             }
             Console.Clear();
+            Console.WriteLine("");
         }
         static void Choice1(string nameVal)
         {
