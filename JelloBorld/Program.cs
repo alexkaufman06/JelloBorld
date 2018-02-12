@@ -30,11 +30,6 @@ namespace JelloBorld
             Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
-            Type("You can look around by typing look with a cardinal direction (ex: Look North or ln).");
-            Type("To move a direction simply type 'North' or 'N' for short (ex: N,S,E,W).");
-            Type("To talk to characters nearby, type 'talk to' plus the name of the character. Good luck!");
-            Type("Press ENTER to start.");
-            Console.ReadLine();
             Matrix();
             Type("You find yourself in an open field with an old man and a chest nearby.");
             Choice1(player.Name);
@@ -176,10 +171,20 @@ namespace JelloBorld
 
 ");
             System.Threading.Thread.Sleep(500);
-            TypeIntro("PRESS ENTER TO START");
-            Console.ReadLine();
-            Console.Clear();
+            TypeIntro("TYPE I FOR INSTRUCTIONS OR PRESS ENTER TO START");
             Console.CursorVisible = true;
+            Console.WriteLine("");
+            string instructions = Console.ReadLine().ToLower();
+            if (instructions == "i")
+            {
+                Console.WriteLine("");
+                Type("You can look around by typing look with a cardinal direction (ex: Look North or ln).");
+                Type("To move a direction simply type 'North' or 'N' for short (ex: N,S,E,W).");
+                Type("To talk to characters nearby, type 'talk to' plus the name of the character. Good luck!");
+                Type("Press ENTER to start.");
+                Console.ReadLine();
+            }
+            Console.Clear();
         }
         static void Type(string stringToType)
         {
@@ -197,7 +202,8 @@ namespace JelloBorld
             Console.SetCursorPosition((Console.WindowWidth - stringToType.Length) / 2, Console.CursorTop);
             for (int i = 0; stringToType.Length - 1 >= i; i++)
             {
-                System.Threading.Thread.Sleep(300);
+                // Slow speed is 300
+                System.Threading.Thread.Sleep(30);
                 Console.Write(stringToType[i]);
             }
         }
@@ -227,7 +233,6 @@ namespace JelloBorld
                 Console.WriteLine("");
             }
             Console.Clear();
-            Console.WriteLine("");
         }
         static void Choice1(string nameVal)
         {
