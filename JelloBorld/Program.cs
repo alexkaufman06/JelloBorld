@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 // Add art: http://patorjk.com/software/taag/#p=display&c=mysql&f=ANSI%20Shadow&t=%20The%20%20greatest%0A%20%20%20%20game%20Ever%0A%20%20%20%20%20%20created 
 /* Solution Explorer on right (A Solution can contain multiple projects)
    NAMESPACE IS A WAY OF ORGANIZING CODE
@@ -19,9 +20,11 @@ namespace JelloBorld
         { // THIS IS A CODE BLOCK CALLED "Main"
         Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.WindowWidth = 108;
+            Console.WindowHeight = 40;
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Intro();
             Player player = new Player();
+            player.Inventory = new List<string>();
             Type("What's your name?");
             Console.ResetColor();
             player.Name = Console.ReadLine();
@@ -32,7 +35,7 @@ namespace JelloBorld
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
             Matrix();
             Type("You find yourself in an open field with an old man and a chest nearby.");
-            Choice1(player.Name);
+            Choice1(player.Name, String.Join(" ", player.Inventory));
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
             if (newGame == "yes")
@@ -71,6 +74,12 @@ namespace JelloBorld
             {
                 get { return money; }
                 set { money = value; }
+            }
+            private List<string> inventory;
+            public List<string> Inventory
+            {
+                get { return inventory; }
+                set { inventory = value; }
             }
         }
         static void Intro()
@@ -234,7 +243,7 @@ namespace JelloBorld
             }
             Console.Clear();
         }
-        static void Choice1(string nameVal)
+        static void Choice1(string nameVal, string inventory)
         {
             Console.ResetColor();
             string direction = Console.ReadLine().ToLower(); 
@@ -251,7 +260,7 @@ namespace JelloBorld
                 case "look n":
                 case "ln":
                     Type("You see a dark and treacherous looking wall...");
-                    Choice1(nameVal);
+                    Choice1(nameVal, inventory);
                     break;
                 case "south":
                 case "s":
@@ -262,7 +271,7 @@ namespace JelloBorld
                 case "look s":
                 case "ls":
                     Type("You see a storm brewing with intense frosty winds...");
-                    Choice1(nameVal);
+                    Choice1(nameVal, inventory);
                     break;
                 case "east":
                 case "e":
@@ -277,7 +286,7 @@ namespace JelloBorld
                 case "look e":
                 case "le":
                     Type("You see the beginnings of a peaceful sunrise.");
-                    Choice1(nameVal);
+                    Choice1(nameVal, inventory);
                     break;
                 case "west":
                 case "w":
@@ -288,28 +297,30 @@ namespace JelloBorld
                 case "look w":
                 case "lw":
                     Type("You see swift movement and hear some growling sounds...");
-                    Choice1(nameVal);
+                    Choice1(nameVal, inventory);
                     break;
                 case "talk to old man":
                 case "talk to man":
-                    Type("The man looks you over and says 'be sure to look around before you embark on your journey,don't make the same mistakes I did.'");
-                    Choice1(nameVal);
+                    Type("The old man looks you over and says 'be sure to look around before you embark on your journey, don't make   the same mistakes I did.'");
+                    Choice1(nameVal, inventory);
                     break;
                 case "open chest":
                     Type("You have added a small dagger to your inventory");
                     Item dagger = new Item();
                     dagger.Name = "Dagger";
-                    Choice1(nameVal);
+                    inventory += dagger.Name;
+                    Choice1(nameVal, inventory);
                     break;
                 case "inventory":
-                    Type("You have a " + " in your posession");
-                    Choice1(nameVal);
+                    Console.WriteLine("Items in possesion:");
+                    Type(inventory);
+                    Choice1(nameVal, inventory);
                     break;
                 default:
                     Type("Please speak clearly...");
                     System.Threading.Thread.Sleep(2500);
                     Type("YA DUMBASS!!!");
-                    Choice1(nameVal);
+                    Choice1(nameVal, inventory);
                     break;
             }
         }
