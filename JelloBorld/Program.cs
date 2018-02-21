@@ -300,18 +300,52 @@ namespace JelloBorld
                     Choice1(nameVal, inventory);
                     break;
                 case "talk to old man":
+                case "talk to the old man":
+                case "talk to the man":
                 case "talk to man":
                     Type("The old man looks you over and says 'be sure to look around before you embark on your journey, don't make   the same mistakes I did.'");
                     Choice1(nameVal, inventory);
                     break;
+                case "talk to chest":
+                case "talk to the chest":
+                    if (inventory == "")
+                    {
+                        Type("mmm... mmm...");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (inventory == "Dagger Rope")
+                    {
+                        Type("I'm out of items alright! Go on now!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else
+                    {
+                        Type("Thanks for opening me! Here, take this rope for your journey ahead.");
+                        Item rope = new Item();
+                        rope.Name = " Rope";
+                        inventory += rope.Name;
+                        Choice1(nameVal, inventory);
+                        break;
+                    }
                 case "open chest":
-                    Type("You have added a small dagger to your inventory");
-                    Item dagger = new Item();
-                    dagger.Name = "Dagger";
-                    inventory += dagger.Name;
-                    Choice1(nameVal, inventory);
-                    break;
+                case "open the chest":
+                    if (inventory == "")
+                    {
+                        Type("You have added a small dagger to your inventory");
+                        Item dagger = new Item();
+                        dagger.Name = "Dagger";
+                        inventory += dagger.Name;
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else
+                    {
+                        Type("The chest is empty, ya dingus!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    }
                 case "inventory":
+                case "items":
+                case "i":
                     if (inventory != "")
                     {
                         Type("Items in possesion: " + inventory);
@@ -330,7 +364,6 @@ namespace JelloBorld
                     Choice1(nameVal, inventory);
                     break;
             }
-            Type("huh?");
         }
         static void Death(string nameVal)
         {
