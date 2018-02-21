@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+// SELF COMMENTING CODE
 // Add art: http://patorjk.com/software/taag/#p=display&c=mysql&f=ANSI%20Shadow&t=%20The%20%20greatest%0A%20%20%20%20game%20Ever%0A%20%20%20%20%20%20created 
 /* Solution Explorer on right (A Solution can contain multiple projects)
    NAMESPACE IS A WAY OF ORGANIZING CODE
@@ -34,7 +35,7 @@ namespace JelloBorld
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
             Matrix();
-            Type("You find yourself in an open field with an old man and a chest nearby.");
+            Type("You find yourself in an open field with an old man and a strange chest nearby...");
             Choice1(player.Name, String.Join(" ", player.Inventory));
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
@@ -74,6 +75,12 @@ namespace JelloBorld
             {
                 get { return money; }
                 set { money = value; }
+            }
+            private int hitPoints;
+            public int HitPoints
+            {
+                get { return hitPoints; }
+                set { hitPoints = value; }
             }
             private List<string> inventory;
             public List<string> Inventory
@@ -236,7 +243,7 @@ namespace JelloBorld
                 Console.Write(binary);
                 System.Threading.Thread.Sleep(60);
             } // BELOW SCROLLS THE BINARY OUT OF VIEW
-            for (int i = 1; i <= 35; i++)
+            for (int i = 1; i <= 40; i++)
             {
                 System.Threading.Thread.Sleep(60);
                 Console.WriteLine("");
@@ -315,7 +322,7 @@ namespace JelloBorld
                         break;
                     } else if (inventory == "Dagger Rope")
                     {
-                        Type("I'm out of items alright! Go on now!");
+                        Type("I'm out of items alright! Go on now, get!");
                         Choice1(nameVal, inventory);
                         break;
                     } else
@@ -331,7 +338,7 @@ namespace JelloBorld
                 case "open the chest":
                     if (inventory == "")
                     {
-                        Type("You have added a small dagger to your inventory");
+                        Type("You have added a small dagger to your inventory!");
                         Item dagger = new Item();
                         dagger.Name = "Dagger";
                         inventory += dagger.Name;
