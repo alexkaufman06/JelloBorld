@@ -312,10 +312,17 @@ namespace JelloBorld
                     Choice1(nameVal, inventory);
                     break;
                 case "inventory":
-                    Console.WriteLine("Items in possesion:");
-                    Type(inventory);
-                    Choice1(nameVal, inventory);
-                    break;
+                    if (inventory != "")
+                    {
+                        Type("Items in possesion: " + inventory);
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else
+                    {
+                        Type("You don't have any items, ya schmuck!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    }
                 default:
                     Type("Please speak clearly...");
                     System.Threading.Thread.Sleep(2500);
@@ -323,6 +330,7 @@ namespace JelloBorld
                     Choice1(nameVal, inventory);
                     break;
             }
+            Type("huh?");
         }
         static void Death(string nameVal)
         {
