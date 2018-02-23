@@ -208,7 +208,7 @@ namespace JelloBorld
             for (int i = 0; stringToType.Length - 1 >= i; i++)
             {
                 System.Threading.Thread.Sleep(rnd.Next(1,125));
-                Console.Write(stringToType[i]);
+                Console.Write(stringToType.ToUpper()[i]);
             }
             Console.WriteLine("");
             Console.WriteLine("");
@@ -253,10 +253,10 @@ namespace JelloBorld
         static void Choice1(string nameVal, string inventory)
         {
             Console.ResetColor();
-            string direction = Console.ReadLine().ToLower(); 
+            string command = Console.ReadLine().ToLower(); 
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
-            switch (direction)
+            switch (command)
             {
                 case "north":
                 case "n":
@@ -365,11 +365,45 @@ namespace JelloBorld
                         break;
                     }
                 default:
-                    Type("Please speak clearly...");
-                    System.Threading.Thread.Sleep(2500);
-                    Type("YA DUMBASS!!!");
-                    Choice1(nameVal, inventory);
-                    break;
+                    if (command.Contains("fuck"))
+                    {
+                        Type("Watch your mouth mother fucker!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("bitch") || command.Contains("ass"))
+                    {
+                        Type("Shut your mouth bitch ass!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("shit") || command.Contains("piss") || 
+                               command.Contains("poop") || command.Contains("fart") ||
+                               command.Contains("pee") || command.Contains("queef") ||
+                               command.Contains("turd") || command.Contains("crap") ||
+                               command.Contains("defecate") || command.Contains("dung") ||
+                               command.Contains("fecal") || command.Contains("feces"))
+                    {
+                        Type("I will shit and piss on your face if you speak to me like that again!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("dick") || command.Contains("cock"))
+                    {
+                        Type("Suck my dick ya lil bitch!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
+                               command.Contains("queer"))
+                    {
+                        Type("Go fuck yourself!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else
+                    {
+                        Type("Please speak clearly...");
+                        System.Threading.Thread.Sleep(2500);
+                        Type("YA DUMBASS!!!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    }
             }
         }
         static void Death(string nameVal)
