@@ -396,6 +396,11 @@ namespace JelloBorld
                         Type("Go fuck yourself!");
                         Choice1(nameVal, inventory);
                         break;
+                    } else if (command.Contains("bastard"))
+                    {
+                        Type("You're a rat bastard... literally, your mom was rat!");
+                        Choice1(nameVal, inventory);
+                        break;
                     } else
                     {
                         Type("Please speak clearly...");
