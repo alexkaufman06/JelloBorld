@@ -320,17 +320,27 @@ namespace JelloBorld
                         Type("mmm... mmm...");
                         Choice1(nameVal, inventory);
                         break;
-                    } else if (inventory == "Dagger Rope")
+                    } else if (inventory == "Dagger | Magic Mushrooms")
                     {
                         Type("I'm out of items alright! Go on now, get!");
                         Choice1(nameVal, inventory);
                         break;
                     } else
                     {
-                        Type("Thanks for opening me! Here, take this rope for your journey ahead.");
-                        Item rope = new Item();
-                        rope.Name = " Rope";
-                        inventory += rope.Name;
+                        Type("Thanks for opening me! Here, take these magic mushrooms for your journey " +
+                            "ahead. Be warned, they may have a  profound change on your perspective. Eat " +
+                            "these only when you are certain you are ready.");
+                        Console.Write(@"
+     .-----.      .-----.      .-----.      .-----.      .-----.      .-----.      .-----.      .-----.
+    /~*****~\    /~*****~\    /~*****~\    /~*****~\    /~*****~\    /~*****~\    /~*****~\    /~*****~\
+   :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:  :_.-:`:-._:
+       (_)          (_)          (_)          (_)          (_)          (_)          (_)          (_)
+    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/    \|/(_)\|/
+
+");
+                        Item magicMushrooms = new Item();
+                        magicMushrooms.Name = " | Magic Mushrooms";
+                        inventory += magicMushrooms.Name;
                         Choice1(nameVal, inventory);
                         break;
                     }
@@ -347,6 +357,20 @@ namespace JelloBorld
                     } else
                     {
                         Type("The chest is empty, ya dingus!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    }
+                case "eat mushroom":
+                case "eat magic mushroom":
+                    if (inventory.Contains("Magic Mushrooms"))
+                    {
+                        Type("You chew up three caps and stems. First the giggles kicked in, then the entire world around " +
+                            "you changes into a strange and surreal multiverse.");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else
+                    {
+                        Type("You don't have any mushrooms!");
                         Choice1(nameVal, inventory);
                         break;
                     }
