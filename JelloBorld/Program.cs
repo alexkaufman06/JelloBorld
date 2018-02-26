@@ -362,6 +362,8 @@ namespace JelloBorld
                     }
                 case "eat mushroom":
                 case "eat magic mushroom":
+                case "eat mushrooms":
+                case "eat magic mushrooms":
                     if (inventory.Contains("Magic Mushrooms"))
                     {
                         Type("You chew up three caps and stems. First the giggles kicked in, then the entire world around " +
@@ -394,6 +396,21 @@ namespace JelloBorld
                         command.Contains("nitwit") || command.Contains("nutjob")|| command.Contains("twit") ||
                         command.Contains("dumb") || command.Contains("loser")) {
                         Type("You lack the coginitive capacity to realize that you are indeed a moron!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("bully"))
+                    {
+                        Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("rude"))
+                    {
+                        Type("I'm a rude crude dude!");
+                        Choice1(nameVal, inventory);
+                        break;
+                    } else if (command.Contains("go to hell"))
+                    {
+                        Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
                         Choice1(nameVal, inventory);
                         break;
                     } else if (command.Contains("your mom"))
