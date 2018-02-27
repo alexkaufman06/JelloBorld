@@ -35,7 +35,7 @@ namespace JelloBorld
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
             Matrix();
-            Type("You find yourself in an open field with an old man and a strange chest nearby...");
+            Type("You find yourself in an open field with an old man and a strange chest nearby dick...");
             Choice1(player.Name, String.Join(" ", player.Inventory));
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
