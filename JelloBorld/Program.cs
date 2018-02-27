@@ -27,15 +27,22 @@ namespace JelloBorld
             Player player = new Player();
             player.Inventory = new List<string>();
             Type("What's your name?");
+        NameEntry:
             Console.ResetColor();
             player.Name = Console.ReadLine();
+            if (player.Name == "")
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Type("Please enter a name");
+                goto NameEntry;
+            }
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
             Matrix();
-            Type("You find yourself in an open field with an old man and a strange chest nearby dick...");
+            Type("You find yourself in an open field with an old man and a strange chest nearby...");
             Choice1(player.Name, String.Join(" ", player.Inventory));
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
@@ -348,7 +355,7 @@ namespace JelloBorld
                 case "open the chest":
                     if (inventory == "")
                     {
-                        Type("You have added a small dagger to your inventory!");
+                        Type("You have added a small dagger to your inventory! The chest makes a very strange noise...");
                         Item dagger = new Item();
                         dagger.Name = "Dagger";
                         inventory += dagger.Name;
