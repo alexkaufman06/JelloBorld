@@ -26,6 +26,7 @@ namespace JelloBorld
             Intro();
             Player player = new Player();
             player.Inventory = new List<string>();
+            player.OnDrugs = "no";
             Type("What's your name?");
         NameEntry:
             Console.ResetColor();
@@ -43,7 +44,7 @@ namespace JelloBorld
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
             Matrix();
             Type("You find yourself in an open field with an old man and a strange chest nearby...");
-            Choice1(player.Name, String.Join(" ", player.Inventory));
+            Choice1(player.Name, String.Join(" ", player.Inventory), player.OnDrugs);
             Type("Type 'Yes' to play another game.");
             string newGame = Console.ReadLine().ToLower();
             if (newGame == "yes")
@@ -76,6 +77,12 @@ namespace JelloBorld
             {
                 get { return name; }
                 set { name = value; }
+            }
+            private string onDrugs;
+            public string OnDrugs
+            {
+                get { return onDrugs; }
+                set { onDrugs = value; }
             }
             private int money;
             public int Money
@@ -257,7 +264,7 @@ namespace JelloBorld
             }
             Console.Clear();
         }
-        static void Choice1(string nameVal, string inventory)
+        static void Choice1(string nameVal, string inventory, string onDrugs)
         {
             Console.ResetColor();
             string command = Console.ReadLine().ToLower(); 
@@ -274,7 +281,7 @@ namespace JelloBorld
                 case "look n":
                 case "ln":
                     Type("You see a dark and treacherous looking wall...");
-                    Choice1(nameVal, inventory);
+                    Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "south":
                 case "s":
@@ -285,7 +292,7 @@ namespace JelloBorld
                 case "look s":
                 case "ls":
                     Type("You see a storm brewing with intense frosty winds...");
-                    Choice1(nameVal, inventory);
+                    Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "east":
                 case "e":
@@ -300,7 +307,7 @@ namespace JelloBorld
                 case "look e":
                 case "le":
                     Type("You see the beginnings of a peaceful sunrise.");
-                    Choice1(nameVal, inventory);
+                    Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "west":
                 case "w":
@@ -311,26 +318,35 @@ namespace JelloBorld
                 case "look w":
                 case "lw":
                     Type("You see swift movement and hear some growling sounds...");
-                    Choice1(nameVal, inventory);
+                    Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "talk to old man":
                 case "talk to the old man":
                 case "talk to the man":
                 case "talk to man":
-                    Type("The old man looks you over and says 'be sure to look around before you embark on your journey, don't make   the same mistakes I did.'");
-                    Choice1(nameVal, inventory);
-                    break;
+                    if (onDrugs == "yes")
+                    {
+                        Type("The man no longer appears old but is now a young child. He looks you over and says 'beware the monster in   the south. The only" +
+                            " thing that can kill it is dragon glass'.");
+                        Choice1(nameVal, inventory, onDrugs);
+                        break;
+                    } else
+                    {
+                        Type("The old man looks you over and says 'be sure to look around before you embark on your journey, don't make   the same mistakes I did.'");
+                        Choice1(nameVal, inventory, onDrugs);
+                        break;
+                    }
                 case "talk to chest":
                 case "talk to the chest":
                     if (inventory == "")
                     {
                         Type("mmm... mmm...");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (inventory == "Dagger | Magic Mushrooms")
                     {
                         Type("I'm out of items alright! Go on now, get!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else
                     {
@@ -348,7 +364,7 @@ namespace JelloBorld
                         Item magicMushrooms = new Item();
                         magicMushrooms.Name = " | Magic Mushrooms";
                         inventory += magicMushrooms.Name;
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                 case "open chest":
@@ -359,12 +375,12 @@ namespace JelloBorld
                         Item dagger = new Item();
                         dagger.Name = "Dagger";
                         inventory += dagger.Name;
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else
                     {
                         Type("The chest is empty, ya dingus!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                 case "eat mushroom":
@@ -374,13 +390,14 @@ namespace JelloBorld
                     if (inventory.Contains("Magic Mushrooms"))
                     {
                         Type("You chew up three caps and stems. First the giggles kicked in, then the entire world around " +
-                            "you changes into a strange and surreal multiverse.");
-                        Choice1(nameVal, inventory);
+                            "you changes intoa strange and surreal multiverse.");
+                        onDrugs = "yes";
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else
                     {
                         Type("You don't have any mushrooms!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                 case "inventory":
@@ -389,12 +406,12 @@ namespace JelloBorld
                     if (inventory != "")
                     {
                         Type("Items in possesion: " + inventory);
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else
                     {
                         Type("You don't have any items, ya schmuck!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                 default:
@@ -403,48 +420,48 @@ namespace JelloBorld
                         command.Contains("nitwit") || command.Contains("nutjob")|| command.Contains("twit") ||
                         command.Contains("dumb") || command.Contains("loser")) {
                         Type("You lack the coginitive capacity to realize that you are indeed a moron!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("bully"))
                     {
                         Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("rude"))
                     {
                         Type("I'm a rude crude dude!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("go to hell"))
                     {
                         Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("your mom"))
                     {
                         Type("talk about mrs. kernel like that again and you'll regret it!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("kill yourself"))
                     {
                         Type("too late, I'm already dead inside... which means I'll have no problem killing you!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("shut up"))
                     {
                         Type("Shut your stinky and useless pie hole!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("lick my") || command.Contains("suck my"))
                     {
                         Type("How about you suck my long... hard... drive!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                     else if (command.Contains("bitch") || command.Contains("ass") || command.Contains("biatch"))
                     {
                         Type("Shut your mouth bitch ass!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("shit") || command.Contains("piss") || command.Contains("poop") || 
                                command.Contains("fart") || command.Contains("pee") || command.Contains("queef") ||
@@ -453,13 +470,13 @@ namespace JelloBorld
                                command.Contains("prude") || command.Contains("butt"))
                     {
                         Type("I will shit and piss on your face if you speak to me like that again!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("dick") || command.Contains("cock") || command.Contains("weiner") ||
                                command.Contains("penis"))
                     {
                         Type("Suck my dick ya lil bitch!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
                                command.Contains("queer") || command.Contains("homo") || command.Contains("slut") ||
@@ -467,24 +484,24 @@ namespace JelloBorld
                                command.Contains("cum"))
                     {
                         Type("Go fuck yourself!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("bastard"))
                     {
                         Type("You're a rat bastard... literally, your mom was rat!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (command.Contains("fuck"))
                     {
                         Type("Watch your mouth mother fucker!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else
                     {
                         Type("Please speak clearly...");
                         System.Threading.Thread.Sleep(2500);
                         Type("YA DUMBASS!!!");
-                        Choice1(nameVal, inventory);
+                        Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
             }
