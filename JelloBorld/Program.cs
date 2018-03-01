@@ -338,7 +338,13 @@ namespace JelloBorld
                     }
                 case "talk to chest":
                 case "talk to the chest":
-                    if (inventory == "")
+                    if (onDrugs == "yes")
+                    {
+                        Type("The chest morphs into a knight wearing majestic armor. The knight tells you 'before you choose to venture   south, make sure" +
+                            " you have a warm coat. I've seen people freeze to death down there.'");
+                        Choice1(nameVal, inventory, onDrugs);
+                        break;
+                    } else if (inventory == "")
                     {
                         Type("mmm... mmm...");
                         Choice1(nameVal, inventory, onDrugs);
