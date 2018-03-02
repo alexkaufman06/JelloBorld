@@ -264,6 +264,10 @@ namespace JelloBorld
             }
             Console.Clear();
         }
+        static void EastRoom(string nameVal, string inventory, string onDrugs)
+        {
+            Type("tesT");
+        }
         static void Choice1(string nameVal, string inventory, string onDrugs)
         {
             Console.ResetColor();
