@@ -221,7 +221,8 @@ namespace JelloBorld
             Random rnd = new Random();
             for (int i = 0; stringToType.Length - 1 >= i; i++)
             {
-                System.Threading.Thread.Sleep(rnd.Next(1,125));
+                // Normal speed is 125
+                System.Threading.Thread.Sleep(rnd.Next(1,30));
                 Console.Write(stringToType.ToUpper()[i]);
             }
             Console.WriteLine("");
@@ -342,6 +343,29 @@ namespace JelloBorld
                     {
                         Type("The chest morphs into a knight wearing majestic armor. The knight tells you 'before you choose to venture   south, make sure" +
                             " you have a warm coat. I've seen people freeze to death down there.'");
+                        Console.Write(@"
+                                 ,                  
+                                / \, | ,        ^--^
+                               |    =|= >      /.--.\
+                                \ /` | `       |====|
+                                 `   |         |`::`|
+                                     |     .-;`\..../`;-.
+                                    /\\/  /  |...::...|  \
+                                    |:'\ |   /'''::'''\   |
+                                     \ /\;-,/\   ::   /\--;
+                                     |\ <` >  >._::_.<,<__>
+                                     | `""`  /   ^^   \|  |
+                                     |       |        |\::/
+                                     |       |        |/|||
+                                     |       |___/\___| '''
+                                     |        \_ || _/
+                                     |        <_ >< _>
+                                     |        |  ||  |
+                                     |        |  ||  |
+                                     |       _\.:||:./_
+                                     |      /____/\____\
+
+");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
                     } else if (inventory == "")
