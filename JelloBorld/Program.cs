@@ -308,6 +308,26 @@ ___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|
                 case "look s":
                 case "ls":
                     Type("You see a storm brewing with intense frosty winds...");
+                    Console.Write(@"
+                         ...        *                        *       *
+                           ...   *         * ..   ...                        *
+                      *      ...        *           *            *
+                               ...               ...                          *
+                                 ..                            *
+                         *        ..        *                       *
+                                __##____              *                      *
+                       *    *  /  ##  ****                   *
+                              /        ****               *         *  X   *
+                        *    /        ******     *                    XXX      *
+                            /___________*****          *             XXXXX
+                             |            ***               *       XXXXXXX   X
+                         *   | ___        |                    *   XXXXXXXX  XXX
+                       *     | | |   ___  | *       *             XXXXXXXXXXXXXXX
+                             | |_|   | |  ****             *           X   XXXXXXX
+                         *********** | | *******      *                X      X
+                     **************************************************************
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "east":
