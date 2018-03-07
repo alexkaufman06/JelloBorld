@@ -483,98 +483,102 @@ ___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|
                         break;
                     }
                 default:
-                    if (command.Contains("idiot") || command.Contains("moron") || command.Contains("stupid") ||
-                        command.Contains("dunce") || command.Contains("amatuer") || command.Contains("jackass") ||
-                        command.Contains("nitwit") || command.Contains("nutjob")|| command.Contains("twit") ||
-                        command.Contains("dumb") || command.Contains("loser")) {
-                        Type("You lack the coginitive capacity to realize that you are indeed a moron!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("bully"))
-                    {
-                        Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("rude"))
-                    {
-                        Type("I'm a rude crude dude!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("go to hell"))
-                    {
-                        Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("your mom"))
-                    {
-                        Type("talk about mrs. kernel like that again and you'll regret it!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("kill yourself"))
-                    {
-                        Type("too late, I'm already dead inside... which means I'll have no problem killing you!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("shut up"))
-                    {
-                        Type("Shut your stinky and useless pie hole!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("lick my") || command.Contains("suck my"))
-                    {
-                        Type("How about you suck my long... hard... drive!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    }
-                    else if (command.Contains("bitch") || command.Contains("ass") || command.Contains("biatch"))
-                    {
-                        Type("Shut your mouth bitch ass!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("shit") || command.Contains("piss") || command.Contains("poop") || 
-                               command.Contains("fart") || command.Contains("pee") || command.Contains("queef") ||
-                               command.Contains("turd") || command.Contains("crap") || command.Contains("defecate") || 
-                               command.Contains("dung") || command.Contains("fecal") || command.Contains("feces") || 
-                               command.Contains("prude") || command.Contains("butt"))
-                    {
-                        Type("I will shit and piss on your face if you speak to me like that again!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("dick") || command.Contains("cock") || command.Contains("weiner") ||
-                               command.Contains("penis"))
-                    {
-                        Type("Suck my dick ya lil bitch!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
-                               command.Contains("queer") || command.Contains("homo") || command.Contains("slut") ||
-                               command.Contains("hussy") || command.Contains("jerkoff") || command.Contains("jerk off") ||
-                               command.Contains("cum"))
-                    {
-                        Type("Go fuck yourself!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("bastard"))
-                    {
-                        Type("You're a rat bastard... literally, your mom was rat!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("fuck"))
-                    {
-                        Type("Watch your mouth mother fucker!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else
-                    {
-                        Type("Please speak clearly...");
-                        System.Threading.Thread.Sleep(2500);
-                        Type("YA DUMBASS!!!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    }
+                    Insults(nameVal, inventory, onDrugs, command);
+                    break;
             }
         }
-        static void Death(string nameVal)
+        static void Insults(string nameVal, string inventory, string onDrugs, string command)
+        {
+            if (command.Contains("idiot") || command.Contains("moron") || command.Contains("stupid") ||
+                        command.Contains("dunce") || command.Contains("amatuer") || command.Contains("jackass") ||
+                        command.Contains("nitwit") || command.Contains("nutjob") || command.Contains("twit") ||
+                        command.Contains("dumb") || command.Contains("loser"))
+            {
+                Type("You lack the coginitive capacity to realize that you are indeed a moron!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bully"))
+            {
+                Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("rude"))
+            {
+                Type("I'm a rude crude dude!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("go to hell"))
+            {
+                Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("your mom"))
+            {
+                Type("talk about mrs. kernel like that again and you'll regret it!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("kill yourself"))
+            {
+                Type("too late, I'm already dead inside... which means I'll have no problem killing you!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("shut up"))
+            {
+                Type("Shut your stinky and useless pie hole!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("lick my") || command.Contains("suck my"))
+            {
+                Type("How about you suck my long... hard... drive!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bitch") || command.Contains("ass") || command.Contains("biatch"))
+            {
+                Type("Shut your mouth bitch ass!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("shit") || command.Contains("piss") || command.Contains("poop") ||
+                     command.Contains("fart") || command.Contains("pee") || command.Contains("queef") ||
+                     command.Contains("turd") || command.Contains("crap") || command.Contains("defecate") ||
+                     command.Contains("dung") || command.Contains("fecal") || command.Contains("feces") ||
+                     command.Contains("prude") || command.Contains("butt"))
+            {
+                Type("I will shit and piss on your face if you speak to me like that again!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("dick") || command.Contains("cock") || command.Contains("weiner") ||
+                     command.Contains("penis"))
+            {
+                Type("Suck my dick ya lil bitch!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
+                     command.Contains("queer") || command.Contains("homo") || command.Contains("slut") ||
+                     command.Contains("hussy") || command.Contains("jerkoff") || command.Contains("jerk off") ||
+                     command.Contains("cum"))
+            {
+                Type("Go fuck yourself!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bastard"))
+            {
+                Type("You're a rat bastard... literally, your mom was rat!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("fuck"))
+            {
+                Type("Watch your mouth mother fucker!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else
+            {
+                Type("Please speak clearly...");
+                System.Threading.Thread.Sleep(2500);
+                Type("YA DUMBASS!!!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+        }
+            static void Death(string nameVal)
         {
             System.Threading.Thread.Sleep(3000);
             Type("You die.");
