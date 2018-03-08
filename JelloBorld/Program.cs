@@ -368,7 +368,19 @@ ___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|
                 case "look west":
                 case "look w":
                 case "lw":
-                    Type("You see swift movement and hear some growling sounds...");
+                    Type("You see a large farm and hear some growling sounds...");
+                    Console.Write(@"
+                                                    _.-^-._    .--.
+                                                 .-'   _   '-. |__|
+                                                /     |_|     \|  |
+                                               /               \  |
+                                              /|     _____     |\ |
+                                               |    |==|==|    |  |
+                           |---|---|---|---|---|    |--|--|    |  |
+                           |---|---|---|---|---|    |==|==|    |  |
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "talk to old man":
