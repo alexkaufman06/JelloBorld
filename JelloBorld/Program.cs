@@ -19,6 +19,7 @@ namespace JelloBorld
     {            // BELOW IS A METHOD CALLED MAIN static=not changing | void=not returning a value
         static void Main(string[] args)
         { // THIS IS A CODE BLOCK CALLED "Main"
+            SouthRoom("blerg", "blerg", "blerg");
         Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.WindowWidth = 108;
             Console.WindowHeight = 40;
@@ -222,7 +223,7 @@ namespace JelloBorld
             for (int i = 0; stringToType.Length - 1 >= i; i++)
             {
                 // Normal speed is 125
-                System.Threading.Thread.Sleep(rnd.Next(1,30));
+                System.Threading.Thread.Sleep(rnd.Next(1, 30));
                 Console.Write(stringToType.ToUpper()[i]);
             }
             Console.WriteLine("");
@@ -246,7 +247,7 @@ namespace JelloBorld
                 string binary = "";
                 for (int j = 1; j <= 108; j++)
                 {
-                    if (rnd.Next(0,11) > 8)
+                    if (rnd.Next(0, 11) > 8)
                     {
                         binary += " ";
                     }
@@ -265,6 +266,17 @@ namespace JelloBorld
             }
             Console.Clear();
         }
+
+        static void SouthRoom(string nameVal, string inventory, string onDrugs)
+        {
+            Console.ResetColor();
+            string command = Console.ReadLine().ToLower();
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Type("This is the South Room");
+            Console.ReadLine();
+        }
+
         static void Choice1(string nameVal, string inventory, string onDrugs)
         {
             Console.ResetColor();
