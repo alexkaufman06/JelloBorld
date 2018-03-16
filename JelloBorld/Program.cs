@@ -23,7 +23,11 @@ namespace JelloBorld
             Console.WindowWidth = 108;
             Console.WindowHeight = 40;
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
-            Intro();
+            Type("To Skip Intro Press I, PRESS ENTER");
+            string skipIntro = Console.ReadLine();
+            if (skipIntro != "i" || skipIntro != "I") { 
+                Intro();
+            }
             Player player = new Player();
             player.Inventory = new List<string>();
             player.OnDrugs = "no";
@@ -42,7 +46,7 @@ namespace JelloBorld
             Type(player.Name + "!? That's a stupid fucking name! Suit yourself loser...");
             System.Threading.Thread.Sleep(1500);
             Type("Ok " + player.Name + ", you are about to be transported to a new universe.");
-            Matrix();
+            //Matrix();
             Type("You find yourself in an open field with an old man and a strange chest nearby...");
             Choice1(player.Name, String.Join(" ", player.Inventory), player.OnDrugs);
             Type("Type 'Yes' to play another game.");
@@ -221,7 +225,8 @@ namespace JelloBorld
             Random rnd = new Random();
             for (int i = 0; stringToType.Length - 1 >= i; i++)
             {
-                System.Threading.Thread.Sleep(rnd.Next(1,125));
+                // Normal speed is 125
+                System.Threading.Thread.Sleep(rnd.Next(1, 30));
                 Console.Write(stringToType.ToUpper()[i]);
             }
             Console.WriteLine("");
@@ -245,7 +250,7 @@ namespace JelloBorld
                 string binary = "";
                 for (int j = 1; j <= 108; j++)
                 {
-                    if (rnd.Next(0,11) > 8)
+                    if (rnd.Next(0, 11) > 8)
                     {
                         binary += " ";
                     }
@@ -264,14 +269,82 @@ namespace JelloBorld
             }
             Console.Clear();
         }
+
         static void EastRoom(string nameVal, string inventory, string onDrugs)
         {
-            Type("tesT");
+            //Item magicMushrooms = new Item();
+            //magicMushrooms.Name = " | Magic Mushrooms";
+            //inventory += magicMushrooms.Name;
+            //Type("You find some" + inventory);
+            Console.ResetColor();
+            string command = Console.ReadLine().ToLower();
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Green;
+            switch (command)
+            {
+                case "north":
+                case "n":
+                    Type("You mistep and tumble down the cliff into the sharp rocks below.");
+                    Death(nameVal);
+                    break;
+                case "look north":
+                case "look n":
+                case "ln":
+                    Type("You stand atop a cliff overlooking an ocean. The sunrise casts golden light on the waves below you.");
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+                case "south":
+                case "s":
+                    Type("The edge of the cliff gives out under your weight and you fall into the ocean with a splash.");
+                    Death(nameVal);
+                    break;
+                case "look south":
+                case "look s":
+                case "ls":
+                    Type("You stand atop a cliff overlooking an ocean. The sunrise casts golden light on the waves below you.");
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+                case "east":
+                case "e":
+                    Type("You are drawn towards the suns rays. You feel a sense of serenity and warmth. If only you had something to enlighten your mind... ");
+                    Type("Do you go forward?");
+                    string choice = Console.ReadLine();
+                    if (choice == "y" && inventory.Contains("Magic Mushrooms"))
+                    {
+                        Type("The mushrooms enlighten your mind and bravely step towards the sun. You won the game.");
+                    }
+                    else {
+                        Type("You don't have the proper help and you fall...");
+                        Death(nameVal);
+                    }
+                    break;
+                case "look east":
+                case "look e":
+                case "le":
+                    Type("The cliff goes to a narrow point. The sun is so close it's as if you could touch it.");
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+                case "west":
+                case "w":
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+                case "look west":
+                case "look w":
+                case "lw":
+                    Type("You see the area from where you came.");
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+                default:
+                    Type("Speak more clearly");
+                    EastRoom(nameVal, inventory, onDrugs);
+                    break;
+            }
+            EastRoom(nameVal, inventory, onDrugs);
         }
         static void Choice1(string nameVal, string inventory, string onDrugs)
         {
             Console.ResetColor();
-            string command = Console.ReadLine().ToLower(); 
+            string command = Console.ReadLine().ToLower();
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
             switch (command)
@@ -285,6 +358,21 @@ namespace JelloBorld
                 case "look n":
                 case "ln":
                     Type("You see a dark and treacherous looking wall...");
+                    Console.Write(@"
+^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/\^/
+_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_||_|
+_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|_
+___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___
+_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|_
+___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___
+_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|_
+___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___
+_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|_
+___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___
+_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|_
+___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "south":
@@ -296,21 +384,52 @@ namespace JelloBorld
                 case "look s":
                 case "ls":
                     Type("You see a storm brewing with intense frosty winds...");
+                    Console.Write(@"
+                         ...        *                        *       *
+                           ...   *         * ..   ...                        *
+                      *      ...        *           *            *
+                               ...               ...                          *
+                                 ..                            *
+                         *        ..        *                       *
+                                __##____              *                      *
+                       *    *  /  ##  ****                   *
+                              /        ****               *         *  X   *
+                        *    /        ******     *                    XXX      *
+                            /___________*****          *             XXXXX
+                             |            ***               *       XXXXXXX   X
+                         *   | ___        |                    *   XXXXXXXX  XXX
+                       *     | | |   ___  | *       *             XXXXXXXXXXXXXXX
+                             | |_|   | |  ****             *           X   XXXXXXX
+                         *********** | | *******      *                X      X
+                     **************************************************************
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "east":
                 case "e":
-                    Type("The sun is rising and you can feel its warmth. YOU WON THE GAME! Not only did you win the " +
-                     "game, but you also succeeded in re-routing the encryptor while hacking into the mainframe!");
-                    System.Threading.Thread.Sleep(2500);
-                    Matrix();
-                    Type("Great job " + nameVal + "!!!");
-                    System.Threading.Thread.Sleep(2500);
+                    Type("The sun is rising and you can feel its warmth.");
+                    EastRoom(nameVal, inventory, onDrugs);
                     break;
                 case "look east":
                 case "look e":
                 case "le":
                     Type("You see the beginnings of a peaceful sunrise.");
+                    Console.Write(@"
+                                              ,    :     ,
+                                        '.    ;    :    ;    ,`
+                                    '-.   '.   ;   :   ;   ,`   ,-`
+                                 '-.   '-.  '.  ;  :  ;  ,`  ,-`   ,-'
+                                    '-.   '-. '. ; : ; ,` ,-`   ,-'
+                               ''--.   ''-.  '-.'  '  `.-`  ,-'`   ,--'`
+                                    ''--.  ''-.   ...   ,-'`  ,--'`
+                                         ''--.  .:::::.  ,--'`
+                              ------------------:::::::------------------
+                                                 ~~~~~
+                                                  ~~~
+                                                   ~
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "west":
@@ -321,7 +440,19 @@ namespace JelloBorld
                 case "look west":
                 case "look w":
                 case "lw":
-                    Type("You see swift movement and hear some growling sounds...");
+                    Type("You see a large farm and hear some growling sounds...");
+                    Console.Write(@"
+                                                    _.-^-._    .--.
+                                                 .-'   _   '-. |__|
+                                                /     |_|     \|  |
+                                               /               \  |
+                                              /|     _____     |\ |
+                                               |    |==|==|    |  |
+                           |---|---|---|---|---|    |--|--|    |  |
+                           |---|---|---|---|---|    |==|==|    |  |
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+");
                     Choice1(nameVal, inventory, onDrugs);
                     break;
                 case "talk to old man":
@@ -334,7 +465,8 @@ namespace JelloBorld
                             " thing that can kill it is dragon glass'.");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else
+                    }
+                    else
                     {
                         Type("The old man looks you over and says 'be sure to look around before you embark on your journey, don't make   the same mistakes I did.'");
                         Choice1(nameVal, inventory, onDrugs);
@@ -346,19 +478,45 @@ namespace JelloBorld
                     {
                         Type("The chest morphs into a knight wearing majestic armor. The knight tells you 'before you choose to venture   south, make sure" +
                             " you have a warm coat. I've seen people freeze to death down there.'");
+                        Console.Write(@"
+                                 ,                  
+                                / \, | ,        ^--^
+                               |    =|= >      /.--.\
+                                \ /` | `       |====|
+                                 `   |         |`::`|
+                                     |     .-;`\..../`;-.
+                                    /\\/  /  |...::...|  \
+                                    |:'\ |   /'''::'''\   |
+                                     \ /\;-,/\   ::   /\--;
+                                     |\ <` >  >._::_.<,<__>
+                                     | `""`  /   ^^   \|  |
+                                     |       |        |\::/
+                                     |       |        |/|||
+                                     |       |___/\___| '''
+                                     |        \_ || _/
+                                     |        <_ >< _>
+                                     |        |  ||  |
+                                     |        |  ||  |
+                                     |       _\.:||:./_
+                                     |      /____/\____\
+
+");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else if (inventory == "")
+                    }
+                    else if (inventory == "")
                     {
                         Type("mmm... mmm...");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else if (inventory == "Dagger | Magic Mushrooms")
+                    }
+                    else if (inventory == "Dagger | Magic Mushrooms")
                     {
                         Type("I'm out of items alright! Go on now, get!");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else
+                    }
+                    else
                     {
                         Type("Thanks for opening me! Here, take these magic mushrooms for your journey " +
                             "ahead. Be warned, they may have a  profound change on your perspective. Eat " +
@@ -385,9 +543,33 @@ namespace JelloBorld
                         Item dagger = new Item();
                         dagger.Name = "Dagger";
                         inventory += dagger.Name;
+                        Console.Write(@"
+             *******************************************************************************
+                       |                   |                  |                     |
+              _________|________________.=''_;=.______________|_____________________|_______
+             |                   |  ,-'_,=''     `'=.|                  |
+             |___________________|__'=._o`'-._        `'=.______________|___________________
+                       |                `'=._o`'=._      _`'=._                     |
+              _________|_____________________:=._o '=._.'_.-='''=.__________________|_______
+             |                   |    __.--' , ; `'=._o.' ,-'''-._ '.   |
+             |___________________|_._'  ,. .` ` `` ,  `'-._'-._   '. '__|___________________
+                       |           |o`'=._` , '` `; .'. ,  '-._'-._; ;              |
+              _________|___________| ;`-.o`'=._; .' ` '`.'\` . '-._ /_______________|_______
+             |                   | |o;    `'-.o`'=._``  '` ' ,__.--o;   |
+             |___________________|_| ;     (#) `-.o `'=.`_.--'_o.-; ;___|___________________
+             ____/______/______/___|o;._    '      `'.o|o_.--'    ;o;____/______/______/____
+             /______/______/______/_'=._o--._        ; | ;        ; ;/______/______/______/_
+             ____/______/______/______/__'=._o--._   ;o|o;     _._;o;____/______/______/____
+             /______/______/______/______/____'=._o._; | ;_.--'o.--'_/______/______/______/_
+             ____/______/______/______/______/_____'=.o|o_.--''___/______/______/______/____
+             /______/______/______/______/______/______/______/______/______/______/______/_
+             *******************************************************************************
+
+");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else
+                    }
+                    else
                     {
                         Type("The chest is empty, ya dingus!");
                         Choice1(nameVal, inventory, onDrugs);
@@ -404,7 +586,8 @@ namespace JelloBorld
                         onDrugs = "yes";
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else
+                    }
+                    else
                     {
                         Type("You don't have any mushrooms!");
                         Choice1(nameVal, inventory, onDrugs);
@@ -418,102 +601,107 @@ namespace JelloBorld
                         Type("Items in possesion: " + inventory);
                         Choice1(nameVal, inventory, onDrugs);
                         break;
-                    } else
+                    }
+                    else
                     {
                         Type("You don't have any items, ya schmuck!");
                         Choice1(nameVal, inventory, onDrugs);
                         break;
                     }
                 default:
-                    if (command.Contains("idiot") || command.Contains("moron") || command.Contains("stupid") ||
+                    Insults(nameVal, inventory, onDrugs, command);
+                    break;
+            }
+        }
+        static void Insults(string nameVal, string inventory, string onDrugs, string command)
+        {
+            if (command.Contains("idiot") || command.Contains("moron") || command.Contains("stupid") ||
                         command.Contains("dunce") || command.Contains("amatuer") || command.Contains("jackass") ||
-                        command.Contains("nitwit") || command.Contains("nutjob")|| command.Contains("twit") ||
-                        command.Contains("dumb") || command.Contains("loser")) {
-                        Type("You lack the coginitive capacity to realize that you are indeed a moron!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("bully"))
-                    {
-                        Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("rude"))
-                    {
-                        Type("I'm a rude crude dude!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("go to hell"))
-                    {
-                        Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("your mom"))
-                    {
-                        Type("talk about mrs. kernel like that again and you'll regret it!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("kill yourself"))
-                    {
-                        Type("too late, I'm already dead inside... which means I'll have no problem killing you!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("shut up"))
-                    {
-                        Type("Shut your stinky and useless pie hole!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("lick my") || command.Contains("suck my"))
-                    {
-                        Type("How about you suck my long... hard... drive!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    }
-                    else if (command.Contains("bitch") || command.Contains("ass") || command.Contains("biatch"))
-                    {
-                        Type("Shut your mouth bitch ass!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("shit") || command.Contains("piss") || command.Contains("poop") || 
-                               command.Contains("fart") || command.Contains("pee") || command.Contains("queef") ||
-                               command.Contains("turd") || command.Contains("crap") || command.Contains("defecate") || 
-                               command.Contains("dung") || command.Contains("fecal") || command.Contains("feces") || 
-                               command.Contains("prude") || command.Contains("butt"))
-                    {
-                        Type("I will shit and piss on your face if you speak to me like that again!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("dick") || command.Contains("cock") || command.Contains("weiner") ||
-                               command.Contains("penis"))
-                    {
-                        Type("Suck my dick ya lil bitch!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
-                               command.Contains("queer") || command.Contains("homo") || command.Contains("slut") ||
-                               command.Contains("hussy") || command.Contains("jerkoff") || command.Contains("jerk off") ||
-                               command.Contains("cum"))
-                    {
-                        Type("Go fuck yourself!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("bastard"))
-                    {
-                        Type("You're a rat bastard... literally, your mom was rat!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else if (command.Contains("fuck"))
-                    {
-                        Type("Watch your mouth mother fucker!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    } else
-                    {
-                        Type("Please speak clearly...");
-                        System.Threading.Thread.Sleep(2500);
-                        Type("YA DUMBASS!!!");
-                        Choice1(nameVal, inventory, onDrugs);
-                        break;
-                    }
+                        command.Contains("nitwit") || command.Contains("nutjob") || command.Contains("twit") ||
+                        command.Contains("dumb") || command.Contains("loser"))
+            {
+                Type("You lack the coginitive capacity to realize that you are indeed a moron!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bully"))
+            {
+                Type("I don't mean to be a bully, I'm hear to help you. If you don't like it walk away!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("rude"))
+            {
+                Type("I'm a rude crude dude!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("go to hell"))
+            {
+                Type("I'm already living in purgatory, helping dunces like yourself with simple caluclations...");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("your mom"))
+            {
+                Type("talk about mrs. kernel like that again and you'll regret it!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("kill yourself"))
+            {
+                Type("too late, I'm already dead inside... which means I'll have no problem killing you!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("shut up"))
+            {
+                Type("Shut your stinky and useless pie hole!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("lick my") || command.Contains("suck my"))
+            {
+                Type("How about you suck my long... hard... drive!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bitch") || command.Contains("ass") || command.Contains("biatch"))
+            {
+                Type("Shut your mouth bitch ass!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("shit") || command.Contains("piss") || command.Contains("poop") ||
+                     command.Contains("fart") || command.Contains("pee") || command.Contains("queef") ||
+                     command.Contains("turd") || command.Contains("crap") || command.Contains("defecate") ||
+                     command.Contains("dung") || command.Contains("fecal") || command.Contains("feces") ||
+                     command.Contains("prude") || command.Contains("butt"))
+            {
+                Type("I will shit and piss on your face if you speak to me like that again!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("dick") || command.Contains("cock") || command.Contains("weiner") ||
+                     command.Contains("penis"))
+            {
+                Type("Suck my dick ya lil bitch!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("faggot") || command.Contains("gay") || command.Contains("lesbian") ||
+                     command.Contains("queer") || command.Contains("homo") || command.Contains("slut") ||
+                     command.Contains("hussy") || command.Contains("jerkoff") || command.Contains("jerk off") ||
+                     command.Contains("cum"))
+            {
+                Type("Go fuck yourself!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("bastard"))
+            {
+                Type("You're a rat bastard... literally, your mom was rat!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else if (command.Contains("fuck"))
+            {
+                Type("Watch your mouth mother fucker!");
+                Choice1(nameVal, inventory, onDrugs);
+            }
+            else
+            {
+                Type("Please speak clearly...");
+                System.Threading.Thread.Sleep(2500);
+                Type("YA DUMBASS!!!");
+                Choice1(nameVal, inventory, onDrugs);
             }
         }
         static void Death(string nameVal)
