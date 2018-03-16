@@ -22,6 +22,7 @@ namespace JelloBorld
         Beginning: // THIS IS A LABEL USED TO RESTART THE GAME
             Console.WindowWidth = 108;
             Console.WindowHeight = 40;
+            // string message = (userValue == "1") ? "boat" : "strand of lint";  TERNARY Operator example I think if else examples
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Intro();
             Player player = new Player();
@@ -247,13 +248,9 @@ namespace JelloBorld
                 for (int j = 1; j <= 108; j++)
                 {
                     if (rnd.Next(0,11) > 8)
-                    {
-                        binary += " ";
-                    }
+                        binary += " "; // Don't need brackets if conditional has one line
                     else
-                    {
                         binary += rnd.Next(0, 2);
-                    }
                 }
                 Console.Write(binary);
                 System.Threading.Thread.Sleep(60);
