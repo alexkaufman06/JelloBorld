@@ -13,6 +13,7 @@ using System.Collections.Generic;
 // Item class as height, width, weight (parent class)
 // Then make classes built off of the parent class that define a weapon, a wearable (backpack/armor), or gear (like a key)
 // Machine language vs assembly (read up)
+// TEST
 namespace JelloBorld
 {
     class Program // CLASSES ARE CONTAINERS FOR ALL THE METHODS IN A PROGRAM
