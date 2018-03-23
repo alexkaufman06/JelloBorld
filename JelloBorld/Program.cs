@@ -310,9 +310,28 @@ namespace JelloBorld
                     Type("You are drawn towards the suns rays. You feel a sense of serenity and warmth. If only you had something to enlighten your mind... ");
                     Type("Do you go forward?");
                     string choice = Console.ReadLine();
-                    if (choice == "y" && inventory.Contains("Magic Mushrooms"))
+                    if (choice == "y" && onDrugs == "yes")
                     {
                         Type("The mushrooms enlighten your mind and bravely step towards the sun. You won the game.");
+                        Console.Write(@"
+                                                  /^\
+                               L L               /   \               L L
+                            __/|/|_             /  .  \             _|\|\__
+                           /_| [_[_\           /     .-\           /_]_] |_\    
+                          /__\  __`-\_____    /    .    \    _____/-`__  /__\   
+                         /___] /=@>  _   {>  /-.         \  <}   _  <@=\ [___\
+                        /____/     /` `--/  /      .      \  \--` `\     \____\
+                       /____/  \____/`-._> /               \ <_.-`\____/  \____\
+                      /____/    /__/      /-._     .   _.-  \      \__\    \____\
+                     /____/    /__/      /         .         \      \__\    \____\
+                    |____/_  _/__/      /          .          \      \__\_  _\____|
+                     \__/_ ``_|_/      /      -._  .        _.-\      \_|_`` _\___/
+                       /__`-`__\      <_         `-;           _>      /__`-`__\
+                          `-`           `-._       ;       _.-`           `-`
+                                            `-._   ;   _.-`
+                                                `-._.-`
+
+");
                     }
                     else {
                         Type("You don't have the proper help and you fall...");
@@ -335,6 +354,24 @@ namespace JelloBorld
                     Type("You see the area from where you came.");
                     EastRoom(nameVal, inventory, onDrugs);
                     break;
+                case "eat mushroom":
+                case "eat magic mushroom":
+                case "eat mushrooms":
+                case "eat magic mushrooms":
+                    if (inventory.Contains("Magic Mushrooms"))
+                    {
+                        Type("You chew up three caps and stems. First the giggles kicked in, then the entire world around " +
+                            "you changes into a strange and surreal multiverse.");
+                        onDrugs = "yes";
+                        EastRoom(nameVal, inventory, onDrugs);
+                        break;
+                    }
+                    else
+                    {
+                        Type("You don't have any mushrooms!");
+                        EastRoom(nameVal, inventory, onDrugs);
+                        break;
+                    }
                 default:
                     Insults(nameVal, inventory, onDrugs, command);
                     EastRoom(nameVal, inventory, onDrugs);
@@ -583,7 +620,7 @@ ___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|
                     if (inventory.Contains("Magic Mushrooms"))
                     {
                         Type("You chew up three caps and stems. First the giggles kicked in, then the entire world around " +
-                            "you changes intoa strange and surreal multiverse.");
+                            "you changes into a strange and surreal multiverse.");
                         onDrugs = "yes";
                         Choice1(nameVal, inventory, onDrugs);
                         break;
