@@ -26,7 +26,7 @@ namespace JelloBorld
             Console.ForegroundColor = ConsoleColor.Green; // CONSOLE IS A CLASS
             Type("To Skip Intro Press I, PRESS ENTER");
             string skipIntro = Console.ReadLine();
-            if (skipIntro != "i" || skipIntro != "I") { 
+            if (skipIntro != "i") { 
                 Intro();
             }
             Player player = new Player();
@@ -336,11 +336,11 @@ namespace JelloBorld
                     EastRoom(nameVal, inventory, onDrugs);
                     break;
                 default:
-                    Type("Speak more clearly");
+                    Insults(nameVal, inventory, onDrugs, command);
                     EastRoom(nameVal, inventory, onDrugs);
                     break;
             }
-            EastRoom(nameVal, inventory, onDrugs);
+            //EastRoom(nameVal, inventory, onDrugs);
         }
         static void Choice1(string nameVal, string inventory, string onDrugs)
         {
